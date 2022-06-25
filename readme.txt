@@ -1,3 +1,4 @@
+npx depcheck
 npx hardhat compile - компиляция смартконтракта
 npx hardhat test - запуск тестов смартконтракта
 npx hardhat run scripts/deploy.ts - деплой смартконтракта в renkiby etherscan, пути прописаны в .env файле, process.env.DEPLOY_KEY_RINKEBY - infura url api, process.env.DEPLOY_ACC_RINKEBY - приватный ключ metamask, process.env.ETHERSCAN_API_KEY - api ключ от etherscan 

@@ -6,6 +6,11 @@ import '@nomiclabs/hardhat-ethers';
 import 'dotenv/config';
 import '@nomiclabs/hardhat-etherscan';
 
+import './tasks/balance';
+import './tasks/transfer';
+import './tasks/transferFrom';
+import './tasks/approve';
+
 module.exports = {
   paths: {
     artifacts: './artifacts',
