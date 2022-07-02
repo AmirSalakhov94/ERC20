@@ -17,7 +17,7 @@ contract ERC20 is IERC20 {
 
     function transfer(address recipient, uint amount) override external returns (bool) {
         require(balanceOf[msg.sender]>=amount, "Insufficient Balance"); 
-
+        
         balanceOf[msg.sender] -= amount;
         balanceOf[recipient] += amount;
         emit Transfer(msg.sender, recipient, amount);
@@ -36,9 +36,10 @@ contract ERC20 is IERC20 {
         uint amount
     ) override external returns (bool) {
 
-        require(balanceOf[sender] >= amount && allowance[sender][msg.sender] >= amount);
+        require(balanceOf[sender] >= amount, "There is not so much money");
+        require(allowance[sender][msg.sender] >= amount, "Not approve");
 
-        allowance[sender][msg.sender] -= amount;
+        // allowance[sender][msg.sender] = amount;
         balanceOf[sender] -= amount;
         balanceOf[recipient] += amount;
         emit Transfer(sender, recipient, amount);

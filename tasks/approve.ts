@@ -5,8 +5,15 @@ task("approve", "Allows _spender to withdraw from your account multiple times, u
         .addParam("spender", "Spender address")
         .addParam("amount", "Amount token")
         .setAction(async(taskArgs, { ethers }) => {
+                console.log("Started")
+
+                const [deployer] = await ethers.getSigners();
+
                 const Token = await ethers.getContractFactory("ERC20")
                 const tokenContract = Token.attach(taskArgs.token)
 
                 await tokenContract.approve(taskArgs.spender, taskArgs.amount)
+                console.log(await tokenContract.allowance(deployer.address, taskArgs.spender))
+
+                console.log("Finished")
 })
